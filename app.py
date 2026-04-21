@@ -3,7 +3,8 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 @app.route('/')
-def inicio():
+def home():
+    return "hola render"
     servicios_veloce = [
         {'id': 'ser1', 'nombre': 'Documentación Confidencial', 'info': 'Manejo seguro de sobres y documentos legales.'},
         {'id': 'ser2', 'nombre': 'Logística para E-commerce', 'info': 'Entregas estratégicas para tiendas en línea.'},
@@ -22,4 +23,4 @@ def contacto():
     return render_template('contacto.html', enviado=False)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
