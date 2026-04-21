@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 card-contacto shadow-lg">
+            <h2 class="text-center text-gold mb-4 fw-bold">SOLICITUD DE SERVICIO AL CLIENTE</h2>
+            
+            {% if enviado %}
+                <div class="alert alert-dark border-gold text-center py-5">
+                    <h3 class="text-gold">¡Mensaje Enviado!</h3>
+                    <p>Gracias <strong>{{ nombre | capitalize }}</strong>, un asesor se comunicará contigo.</p>
+                    <a href="/" class="btn btn-gold mt-3">VOLVER AL INICIO</a>
+                </div>
+            {% else %}
+                <form method="POST">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="text-gold fw-bold small">Nombre</label>
+                            <input type="text" name="nombre" class="form-control bg-dark text-white border-secondary" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="text-gold fw-bold small">Apellido</label>
+                            <input type="text" name="apellido" class="form-control bg-dark text-white border-secondary">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="text-gold fw-bold small">WhatsApp - Teléfono</label>
+                        <input type="tel" name="tel" class="form-control bg-dark text-white border-secondary" placeholder="64179000" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="text-gold fw-bold small">Correo electrónico</label>
+                        <input type="email" name="email" class="form-control bg-dark text-white border-secondary" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="text-gold fw-bold small">Tipo de servicio</label>
+                        <select name="servicio" class="form-select bg-dark text-white border-secondary">
+                            <option>Documentación Confidencial</option>
+                            <option>Logística E-commerce</option>
+                            <option>Envíos Urgentes</option>
+                            <option>Tramites</option>
+                            <option>Artículos de Almacenaje</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="text-gold fw-bold small">Detalles de la solicitud</label>
+                        <textarea name="motivo" class="form-control bg-dark text-white border-secondary" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-gold w-100">ENVIAR SOLICITUD</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
